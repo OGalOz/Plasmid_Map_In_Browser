@@ -7,11 +7,22 @@ python3
 Biopython
 
 How to run the program:
-    run "python plasmid_map_viewer.py test.gbk my_html.html"
+    Command line: "python plasmid_map_viewer.py test.gbk my_html.html"
+
 test.gbk and my_html.html are variable.
-Use a plasmid gbk file where test.gbk goes (first argument) and name your html file what you'd like the output to be.
+
+Use a plasmid gbk file instead of "test.gbk" (first argument) and name your html file what you'd like the output to be (instead of my_html.html, unless you want it to be my_html.html).
+
 The program writes (or overwrites) the html file you named.
-The config.json file contains variables you can control in the design of the file.
+
+The config.json file contains variables you can control in the design of the file - most importantly is how the parts are labelled.
+In gb_info in the config file you can label how the parts are named, and what type name in the file corresponds to the type listed
+in the "types_dict" list.
+
+
+
+* Make sure the gbk file and html file locations are readable/writable.
+
 
 
 
