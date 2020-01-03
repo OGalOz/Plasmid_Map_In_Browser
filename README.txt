@@ -16,8 +16,7 @@ Use your own gbk file (with fewer than 100 features) instead of "test.gbk" (firs
 The program writes (or overwrites) the html file you named.
 
 The config.json file contains variables you can control in the design of the file - most importantly is how the features/parts are labelled.
-In gb_info in the config file you can label how the parts are named, and what type name in the file corresponds to the type listed
-in the "types_dict" list.
+In gb_info in the config file you can label how the parts are named, and what "type-name" (promoter, terminator) in the file corresponds to the type listed in the "types_dict" list.
 
 
 
