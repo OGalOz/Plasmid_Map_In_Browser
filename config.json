@@ -11,7 +11,8 @@
             "scar": "scar",
             "ribozyme": "ribozyme",
             "backbone": "backbone"
-        }
+        },
+        "max_number_of_features_allowed" : 100
 
     },
     "js_info": {

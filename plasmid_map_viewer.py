@@ -4,9 +4,7 @@
 """
 Maintainer: ogaloz@lbl.gov
 Takes as an input a genbank file - (representing a plasmid).
-Maximum Features (in the plasmid) = 100
-To-Do:
-    Consider: https://sbolstandard.org/wp-content/uploads/2017/04/SBOL-Visual-2.1.pdf
+Maximum Features (in the plasmid) = 100 (config file)
     
 
 
@@ -31,19 +29,12 @@ Inputs:
     gb_info: (dict)
         name_tag: (str) location in file where name of feature exists (e.g. locus_tag)
         color_tag: (str) [optional] location in file where color of feature exists if at all (e.g. ApEinfo_fwdcolor)
+        more ... (in config file)
     js_info: (dict)
         circle_radius: (int) Radius size of circle in javascript (eg 200)
-        circle_line_width: (int) Thickness of line in plasmid
-        center_coordinates: (list) each internal part is an int [x,y]
-        pointer_len_short: (float) Length of pointer (shorter version)
-        pointer_len_long: (float) Length of pointer (longer version)
-        pointer_thick: (int) thickness of pointer
-        text_size: (int) Size of text for names of features
-        title_text_size: (int) Size of text in the center
-        base_html_filepath: (str) filepath to the base html to substitute into.
-        promoter_info, etc. dicts which contain info for the SBOL visuals.
+        more ... (in config file)
 Outputs:
-    html_str: (str) The string for the entire HTML file
+    complete_js_str: (str) The string for the javascript that draws the plasmid map.
 
 """
 def make_plasmid_graph(gb_file, gb_info, js_info, base_html_filepath, user_output_name):
@@ -57,13 +48,10 @@ def make_plasmid_graph(gb_file, gb_info, js_info, base_html_filepath, user_outpu
     logging.info(js_pointers_and_names_str )
     logging.info(plasmid_name_center_canvas_str)
     logging.info(sbol_visuals_js_str)
-    return js_plasmid_str + js_pointers_and_names_str + plasmid_name_center_canvas_str + sbol_visuals_js_str
+    complete_js_str = js_plasmid_str + js_pointers_and_names_str + plasmid_name_center_canvas_str + sbol_visuals_js_str
 
-    """
-    html_str = create_html_file(plasmid_name, js_plasmid_str, js_pointers_and_names_str, base_html_filepath, user_output_name)
-    
-    return html_str
-    """
+    return complete_js_str 
+
 
 
 """
@@ -72,6 +60,7 @@ Inputs:
     gb_info: (dict)
         name_tag: (str) location in file where name of feature exists (e.g. locus_tag)
         color_tag: (str) [optional] location in file where color of feature exists if at all (e.g. ApEinfo_fwdcolor)
+        max_number_of_features_allowed: (int) Total number of features allowed in plasmid file.
 Outputs:
     out_list: (list) contains [plasmid_info, js_feat_list]
       plasmid_info: (dict) 
@@ -90,7 +79,7 @@ Outputs:
             bp_len: (int) Length in base pairs.
             pointer_direction: (str) 'out' out of plasmid, 'in' inside plasmid.
             midpoint: (list) list of floats. Defaults to [0,0], should be replaced later. Midpoint location on plasmid map.
-            typ:(str) from this list: (ribozyme/promoter/rbs/terminator/scar)
+            typ:(str) from this list: (promoter/rbs/terminator/cds/scar/ribozyme/backbone)
 """
 def get_js_feat_list(gb_file, gb_info):
 
@@ -105,7 +94,7 @@ def get_js_feat_list(gb_file, gb_info):
         'plasmid_length': p_len,
         'num_features': p_feat_len
             }
-    if p_feat_len > 100:
+    if p_feat_len > gb_info["max_number_of_features_allowed"]:
         raise ValueError("Too many features in genbank file: " + gb_file)
     js_feat_list = []
     for i in range(p_feat_len):
@@ -316,18 +305,12 @@ def make_js_canvas_plasmid(js_feat_list, js_info):
 
     return js_str
 
+
+
+
 """
 Info:
   We assume the text box making function is: wrapText(context, text, x, y, maxWidth, lineHeight).
-    Called with (for example):
-        var maxWidth = 400;
-        var lineHeight = 25;
-        var x = 500
-        var y = 400;
-        var text = 'Origin';
-        ctx.font = '10pt Calibri';
-        ctx.fillStyle = '#333';
-        wrapText(ctx, text, x, y, maxWidth, lineHeight);
 
 Inputs:
     js_info: (dict)
@@ -443,7 +426,6 @@ def make_js_pointers_and_names(js_feat_list, js_info):
 
 
 """
-TD: Estimate length of each letter in pixels, then place word so center of word is in the center of the circle.
 Inputs:
     js_info: (dict)
         circle_radius: (int) Radius size of circle in javascript (eg 200)
@@ -565,10 +547,7 @@ def make_sbol_standard_visuals(js_feat_list,js_info, plasmid_info, gb_info):
 
     return visuals_str
 
-"""
-
-
-"""
+#Incomplete Function
 def create_html_file(plasmid_name, js_plasmid_str, js_pointers_and_names_str, base_html_filepath, user_output_name):
     f = open(base_html_filepath, "r")
     file_str = f.read()
@@ -583,7 +562,7 @@ def create_html_file(plasmid_name, js_plasmid_str, js_pointers_and_names_str, ba
 
     return file_str
 
-
+#Incomplete function
 def convert_canvas_to_img_js():
     """
     // Converts canvas to an image
@@ -620,7 +599,6 @@ def run_program(input_gbk, output_filepath):
     base_html_filepath = os.path.join(os.getcwd(), "template.html")
     config_filepath = os.path.join(os.getcwd(),'config.json')
     user_output_name = ""
-
     f = open(config_filepath, "r")
     file_str = f.read()
     f.close()
