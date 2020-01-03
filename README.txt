@@ -11,11 +11,11 @@ How to run the program:
 
 test.gbk and my_html.html are variable.
 
-Use a plasmid gbk file instead of "test.gbk" (first argument) and name your html file what you'd like the output to be (instead of my_html.html, unless you want it to be my_html.html).
+Use your own gbk file (with fewer than 100 features) instead of "test.gbk" (first argument) and name your html file what you'd like the output to be (instead of my_html.html, unless you want it to be my_html.html).
 
 The program writes (or overwrites) the html file you named.
 
-The config.json file contains variables you can control in the design of the file - most importantly is how the parts are labelled.
+The config.json file contains variables you can control in the design of the file - most importantly is how the features/parts are labelled.
 In gb_info in the config file you can label how the parts are named, and what type name in the file corresponds to the type listed
 in the "types_dict" list.
 
