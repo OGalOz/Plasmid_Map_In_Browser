@@ -95,7 +95,7 @@ def get_js_feat_list(gb_file, gb_info):
         'num_features': p_feat_len
             }
     if p_feat_len > gb_info["max_number_of_features_allowed"]:
-        raise ValueError("Too many features in genbank file: " + gb_file)
+        raise ValueError("Too many features in genbank file: " + gb_file + ". Please use a plasmid with no more than {} features".format(str(gb_info['max_number_of_features_allowed'])))
     js_feat_list = []
     for i in range(p_feat_len):
         feat = p_features[i]
