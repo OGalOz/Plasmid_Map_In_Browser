@@ -1,18 +1,14 @@
-# Plasmid_Map_In_Browser
+# Plasmid Map In Browser
 
 This program makes a plasmid map that you can view in a browser that supports Javascript and Canvas objects in HTML5.
 
-Depends on:
-python3
-Biopython
+Depends on: python3, Biopython
 
 How to run the program:
 
-    Command line:
-    ```
-    python plasmid_map_viewer.py test_circuit.gbk my_html.html
-    ```
-
+```
+python plasmid_map_viewer.py test_circuit.gbk my_html.html
+```
 
 **test_circuit.gbk** and **my_html.html** are variable.
 
