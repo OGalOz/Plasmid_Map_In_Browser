@@ -12,7 +12,7 @@ python plasmid_map_viewer.py test_circuit.gbk my_html.html
 
 **test_circuit.gbk** and **my_html.html** are variable.
 
-Use your own gbk file (with fewer than 100 features) instead of "test_circuit.gbk" (first argument) and name your html file what you'd like the output to be (instead of my_html.html, unless you want it to be my_html.html).
+Use your own gbk file (with fewer than 100 features [100 is a configurable number- you can change it in config.json under max_number_of_features_allowed]) instead of "test_circuit.gbk" (first argument) and name your html file what you'd like the output to be (instead of my_html.html, unless you want it to be my_html.html).
 
 The program writes (or overwrites) the html file you named.
 
