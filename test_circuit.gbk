@@ -1,4 +1,4 @@
-LOCUS       job_1576706977285_A000_plasmid_circuit_P000  7741 bp ds-DNA   circular     18-Dec-2019
+LOCUS       plasmid_circuit_P000  7741 bp ds-DNA   circular     18-Dec-2019
 FEATURES             Location/Qualifiers
      backbone        1..53
                      /locus_tag=backbone

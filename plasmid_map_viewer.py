@@ -615,9 +615,6 @@ def run_program(input_gbk, output_filepath):
     h.close()
 
 
-main()
-
-
 
 
 
@@ -649,3 +646,6 @@ def test():
 
     return 0
 
+
+if __name__ == "__main__":
+    main()
