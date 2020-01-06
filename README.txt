@@ -7,7 +7,9 @@ python3
 Biopython
 
 How to run the program:
-    Command line: "python plasmid_map_viewer.py test_circuit.gbk my_html.html"
+
+    Command line:
+    '''python plasmid_map_viewer.py test_circuit.gbk my_html.html'''
 
 test_circuit.gbk and my_html.html are variable.
 
