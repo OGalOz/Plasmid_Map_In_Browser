@@ -9,15 +9,18 @@ Biopython
 How to run the program:
 
     Command line:
-    '''python plasmid_map_viewer.py test_circuit.gbk my_html.html'''
+    ```
+    python plasmid_map_viewer.py test_circuit.gbk my_html.html
+    ```
 
-test_circuit.gbk and my_html.html are variable.
+
+**test_circuit.gbk** and **my_html.html** are variable.
 
 Use your own gbk file (with fewer than 100 features) instead of "test_circuit.gbk" (first argument) and name your html file what you'd like the output to be (instead of my_html.html, unless you want it to be my_html.html).
 
 The program writes (or overwrites) the html file you named.
 
-The config.json file contains variables you can control in the design of the file - most importantly is how the features/parts are labelled.
+The **config.json** file contains variables you can control in the design of the file - most importantly is how the features/parts are labelled.
 In gb_info in the config file you can label how the parts are named, and what "type-name" (promoter, terminator) in the file corresponds to the type listed in the "types_dict" list.
 
 
