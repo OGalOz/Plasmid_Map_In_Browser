@@ -24,7 +24,7 @@ In gb_info in the config file you can label how the parts are named, and what "t
 * Make sure the gbk file and html file locations are readable/writable.
 
 **Sample plasmid map:**
-![GitHub Logo](/images/sample_image.png)
+![GitHub Logo](/images/sample_img.png)
 Format: ![Alt Text](url)
 
 
