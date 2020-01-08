@@ -596,8 +596,10 @@ def main():
 
 
 def run_program(input_gbk, output_filepath):
-    base_html_filepath = os.path.join(os.getcwd(), "template.html")
-    config_filepath = os.path.join(os.getcwd(),'config.json')
+    base_html_filepath = os.path.join(os.path.dirname(os.path.realpath(__file__))
+, "template.html")
+    config_filepath = os.path.join(os.path.dirname(os.path.realpath(__file__))
+,'config.json')
     user_output_name = ""
     f = open(config_filepath, "r")
     file_str = f.read()
@@ -621,10 +623,10 @@ def run_program(input_gbk, output_filepath):
 
 def test():
     logging.basicConfig(level=logging.DEBUG)
-    gb_file = os.path.join(os.getcwd(), "test_circuit.gbk")
-    out_file_name = os.path.join(os.getcwd(), "test.html")
-    base_html_filepath = os.path.join(os.getcwd(), "test_template.html")
-    config_filepath = os.path.join(os.getcwd(),'config.json')
+    gb_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "test_circuit.gbk")
+    out_file_name = os.path.join(os.path.dirname(os.path.realpath(__file__)), "test.html")
+    base_html_filepath = os.path.join(os.path.dirname(os.path.realpath(__file__)), "test_template.html")
+    config_filepath = os.path.join(os.path.dirname(os.path.realpath(__file__)),'config.json')
     f = open(config_filepath, "r")
     file_str = f.read()
     f.close()
